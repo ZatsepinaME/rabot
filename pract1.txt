@@ -1,0 +1,44 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[english, russian]{babel}
+
+
+\title{Практическая работа №1}
+\author{Зацепина М.Е.}
+%конец преамбулы
+
+\begin{document}
+\maketitle 
+\textbf {Задание:\,\,\,Перевод числа 70 из двоичной системы координат в десятичную.}\\[11pt]
+\maketitle 
+Решение:
+$$
+70_{10}=1000110_{2}
+$$
+
+
+\maketitle
+Отчет:
+$$\lfloor
+\frac{70}{2}\rfloor=35, \;\;70\; mod\, 2\;\; =0;$$
+$$\lfloor
+\frac{35}{2}\rfloor=17, \;\;35\; mod\, 2\;\; =1;$$
+$$\lfloor
+\frac{17}{2}\rfloor=8, \;\;17\; mod\, 2\;\; =1;$$
+$$\lfloor
+\frac{8}{2}\rfloor=4, \;\;8\; mod\, 2\;\; =0;$$
+$$\lfloor
+\frac{4}{2}\rfloor=2, \;\;4\; mod\, 2\;\; =0;$$
+$$\lfloor
+\frac{2}{2}\rfloor=1, \;\;2\; mod\, 2\;\; =0;$$
+
+\maketitle
+Перевод из двоичной системы в десятичную:
+$$
+1000110_2=0\cdot 2^0+1\cdot2^1+1\cdot2^2+0\cdot2^3+0\cdot 2^4+
++0\cdot 2^5+1\cdot 2^6={70}_{10}
+$$
+
+\end{document}
