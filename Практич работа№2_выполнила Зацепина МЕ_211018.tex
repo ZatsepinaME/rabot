@@ -1,0 +1,97 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage[european,cuteinductors,smartlabels]{circuitikz}
+
+\usepackage[english, russian]{babel}
+
+\DeclareMathOperator{\Coker}{Coker}
+\DeclareMathOperator{\Ker}{Ker}
+\usetikzlibrary{positioning}
+
+\title{Практическая работа №2}
+\author{Зацепина М.Е.}
+%конец преамбулы
+\usetikzlibrary{quotes,angles}
+\begin{document}
+\maketitle 
+\textbf {Задание:\,\,\,Ковариантные и конравариантые координаты
+вектора в косоугольной системе координат}\\[11pt]
+\maketitle 
+Решение:
+
+
+\begin{tikzpicture} [descr/.style={fill=white},text height=3ex, text depth=1ex]
+\begin{scope}[scale=0.7]
+\draw[thin,-> ] (-5,0) -- (14,0) node [below] {${\scriptstyle X}$};
+\node (k-1) at (-0.5,-0.6) {$(0,0)$};
+%\newcommand{\D}{10}
+%\newcommand{\alfa}{20}
+%\newcommand{\theta}{$\alfa+115$}
+
+\def\D{10}
+\def\R{10}
+\def\alfa{20}
+\def\beta{65}
+\def\teta{135}
+
+\draw[thick, red,-latex] (0,0) -- ({\D*cos(\alfa)},{\D*sin(\alfa)});
+\node  (k+3.5) at (10,3.5) {$\vec{X}$};
+\draw[thin,blue,dashed] ({\D*cos(\alfa)},{\D*sin(\alfa)}) -- ({\D*cos(\alfa)},0) node [below] {$X_{1}$};
+
+
+\draw[thin,blue,dashed] ({\D*cos(\alfa)},{\D*sin(\alfa)}) -- (2.8,-3.2);
+\draw[thin,blue,dashed] (4,-4) -- (-4,4) node[pos=0.05,sloped,below]  {$X_{2}$};
+
+
+\draw[thin,-> ] (0,0) -- (0,8) node [right] {${\scriptstyle Y}$};
+
+\draw[thin,green, dashed] ({\D*cos(\alfa)},{\D*sin(\alfa)}) -- (-3.42,3.42) node [below left, descr]  {$X^{2}$};
+\draw[thin, green,dashed] ({\D*cos(\alfa)}, {\D*sin(\alfa)}) -- ({\D*cos(\alfa) - \D*sin(\alfa)/tan(\teta)},0) node[below] {$X^1$};
+\draw[thin, green,dashed] (6.06,6.76) -- ({\D*cos(\alfa)}, {\D*sin(\alfa)});
+%\draw[thin,=>] (0.5,-0.5) -- ({\pi/2+\D*sin(\alfa)},{\pi/2+\D*cos(\alfa)}) node [left] {$E_1$};
+
+
+
+\draw[thin,<->,black] (6,0) arc(0:{\alfa}:6) node[right, midway, descr]{$\,\,\,\alpha=20^\circ$};
+\draw[thin,<->,black] (6,0) arc(0:\alfa:6);
+
+\draw[->, xshift=0cm,yshift=0cm]     (135:0) -- (135:7); 
+\draw[thin,<->,black] (5,0) arc(0:{\teta}:5); 
+\node[above right, descr] (k+5) at (0.8,5)  {$\theta=\,\,\teta^\circ$};
+\draw[thin,<->,black] (5,0) arc(0:{\teta}:5);
+
+
+%\draw[thin, dashed ] (6.06,6.76) -- (2.45,-6.74);
+\draw[thin,  green, dashed ] (0,0) -- (6.76,6.76);
+
+\draw[->>,thick, orange] (0,0) -- (4,0) node [below] {$\vec{e}\,_1$};
+
+\draw[->>,thick, orange] (0,0) -- (2,2) node [ left] {$\vec{e}\,\,^1$};
+
+\draw[->>,thick, orange] (0,0) -- (1.41,-1.41) node [ left] {$\vec{e}\,_2$};
+
+\draw[->>,thick, orange] (0,0) -- (0,2) node [left] {$\vec{e}\,\,^2$};
+
+%\draw[thin,=>] (-0.5,-0.5) -- (5,5) node [right] {$E_2$};
+
+
+\draw[thin, blue ] (3.5,-2.5) -- (4,-3);
+\draw[thin, blue ] (4,-3) -- (3.5,-3.5);
+
+\draw[thin, blue ] (\D*cos(\alfa,0.5) -- (10,0.5);
+\draw[thin, blue ] (10,0.5) -- (10,0);
+
+\draw[thin,  green ] (0,2.92) -- (0.5,2.92);
+\draw[thin,  green ] (0.5,2.92) -- (0.5,3.42);
+
+\draw[thin, green ] (6.06,6.06) -- (6.41,5.7);
+\draw[thin, green ] (6.41,5.7) -- (6.76,6.06);
+\end{scope}
+\end{tikzpicture} 
+
+%\end{tikzpicture}
+
+\end{document}

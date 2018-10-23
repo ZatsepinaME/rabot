@@ -1,0 +1,181 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+%\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage[european,cuteinductors,smartlabels]{circuitikz}
+
+\usepackage[english, russian]{babel}
+
+\DeclareMathOperator{\Coker}{Coker}
+\DeclareMathOperator{\Ker}{Ker}
+%\usepackage{pgfplots}
+\usetikzlibrary{positioning}
+\usetikzlibrary{quotes,angles}
+\usetikzlibrary{arrows,shapes}
+\usepackage{xifthen}
+
+%\usepackage[active,tightpage]{preview}
+%\setlength\PreviewBorder{0pt}
+\usepackage{pgf,tikz}
+\usepackage{pgfplots}
+
+\usetikzlibrary{backgrounds}
+%\usetikzlibrary{decorations}
+
+\title{Практическая работа №3}
+\author{Зацепина М.Е.}
+%конец преамбулы
+
+\begin{document}
+\maketitle 
+\textbf {Задание:\,\,\,Построение графика функции}\\[11pt]
+$x^3 - 4x^2 -3x - 6 = 0$
+\definecolor{darkgray}{rgb}{0.25,0.25,0.25}
+%\definecolor{lightgray}{rgb}{0.75,0.75,0.75}
+
+
+  \maketitle 
+Решение показано на листе 2:
+		
+%\pgfplotsset{compat=1.9};
+\begin{tikzpicture} [descr/.style={fill=white},text height=3ex, text depth=1ex]
+\begin{scope}[scale=0.5]
+
+%%Axis
+%%\draw [<->] (0,15) node (yaxis) [left] {$Y$} -- (0,-15) -- (-15,0) -- (15,0) node (xaxis) [below] {$X$};
+%%                                                                                    --(0,0) node[below left] {(0,0)}
+    \draw[loosely dotted] (-9,-25) grid (9,13);
+   
+
+
+ 
+% Macros for cst. They have to be redefined each time. See inside document
+%\newcommand{\cA}{0.2}%	Cste . fct
+
+
+%LaTeX Macro for drawing fct with pgf/tikz. Define once, use many!
+%\newcommand{\FctAss}
+
+ % \pgfmathparse{0.1+\cA*1.1} \pgfmathresult \let\maxY\pgfmathresult% evaluate maxY 
+%  \pgfmathparse{-0.1-\cA*1.1} \pgfmathresult \let\minY\pgfmathresult% evaluate minY
+  %   \pgfmathparse{\maxY < 1} \pgfmathresult \let\BmaxY\pgfmathresult% What if maxY < 1? Then set Boolean to 1
+    %   \ifthenelse{\equal{\BmaxY}{3.0}}{%
+     %  \pgfmathparse{1.2} \pgfmathresult \let\maxY\pgfmathresult% Correct maxY to have correct graph
+  %     }{}
+   %  \pgfmathparse{\minY > 0} \pgfmathresult \let\BminY\pgfmathresult% What if minY > 0? Then set Boolean to 1
+  %     \ifthenelse{\equal{\BminY}{3.0}}{%
+    %   \pgfmathparse{0} \pgfmathresult \let\minY\pgfmathresult% Correct minY to have correct graph
+       
+%        DRAW the graph of the function from here on
+%   \draw[very thin,color=gray] (-0.5,\minY) grid (3.9,\maxY);% GRID use minY & maxY
+%    \draw[->] (-0.2,0) -- (8.2,0) node[right] {$x$};
+%    \draw[->] (0,\minY) -- (0,\maxY) node[above] {$f(x)$};% y axis use minY & maxY too
+%    \draw[smooth,samples=200,color=blue] plot function{\cA^3-4*\cA^2-3*\cA-6} 
+  %      node[right] {$f(x) =\cA^3-4*(\cA^2)-3*\cA-6$};
+% units for cartesian reference frame
+   
+
+
+   %%   \foreach \x in {0,1}
+   %%   \draw (\x cm,3pt) -- (\x cm,-3pt)
+   %%         node[anchor=north,xshift=-0.15cm] {$\x$};
+    %%  \foreach \y/\ytext in {0,4}
+    %%  \draw (2pt,\y cm) -- (-2pt,\y cm) node[anchor=east] {$\ytext$};
+
+
+   % [line cap=round,line join=round,x=2cm,y=2cm,
+     
+     %using the decoration 'brace' (=a curly brace as path replacement)
+    % decoration={brace,amplitude=2pt}]
+%main layer
+%creating the grid
+ % \draw [color=lightgray,dash pattern=on 1pt off 1pt, xstep=2cm,ystep=2cm]
+                                                % (-0.1,-0.1) grid (2.3,2.3);
+%creating the ticks and xy-axis nodes
+  \draw[-latex,color=darkgray,thin] (-10,0) -- (10,0)  node (xaxis) [below] {$X$};
+   \foreach \x in {-1,1}
+   \draw[shift={(\x,0)},color=darkgray,thin] (0pt,3pt) -- (0pt,-3pt)
+                                   node[below left] {\footnotesize $\x$};
+  \draw[-latex,color=darkgray] (0,-25) -- (0,14)  node (yaxis) [left] {$Y$};
+      \foreach \y in {-2,2}
+      \draw[shift={(0,\y)},color=darkgray,thin] (3pt,0pt) -- (-3pt,0pt)
+                                    node[left] {\footnotesize $\y$};
+  \draw[color=black] (-1pt,-12pt) node[left] {\footnotesize $0$};
+%some function
+  \draw[smooth,samples=10,domain=-5:5.0] 
+
+   plot(\x,{\x^3 - 4*\x^2 -3*\x-6});
+%\draw[thick]     node[above right] {$y=x^3 - 4x^2 -3x-6$};
+\draw (4.5cm,160pt) node[above]
+        {$y=x^3 - 4x^2 -3x-6$};
+
+% END of macro
+%\begin{preview}
+% And now use it!
+%    \FctAss{}
+    
+% Change the parameters
+ %   \renewcommand{\cA}{2}
+   
+% WITHOUT rewriting the code for the picture    
+%    \FctAss{}
+% 
+% And do it again    
+  %  \renewcommand{\cA}{1.2}
+    
+    
+    
+%\end{preview}
+
+
+
+
+
+
+
+%    \foreach \x/\xtext in {1/1, 2/2, 3/3}
+   
+% \draw[shift={(\x,0)}] (0pt,2pt) -- (0pt,-2pt) node[below] {$\xtext$};
+%    \foreach \y/\ytext in {1/1, 2/2, 3/3, 4/4}
+%   \draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left] {$\ytext$};
+
+
+%\newcommand{\xb}{-1}
+%\newcommand{\xa}{1}
+%\begin{scope}[scale=0.8]
+%\draw[thin, ->] (-6,0) -- (6.5,0) node[right] {$X$};
+%\draw[thin, ->] (0,-2.5) -- (0,4) node[left] {$Y$};
+%\foreach \x\xtext in  {-5/-5,5/5,{\xb}/\xb,{\xa}\xa}}  
+ % \draw (\x,0.1) -- (\x,-0.1) node[below] {$\xtext$};
+
+ %\draw[domain=-5:5, help lines, smooth, red]
+   %plot ({\x},{0.2*(\x-\xa)*(\x-\xb)});
+
+
+%\newcommand{\xb}{-2}
+%\newcommand{\xa}{1}
+%\draw[thin, ->] (-1,0) -- (2.5,0) node[right] {$X$};
+%\draw[thin, ->] (0,-6) -- (0,1.5) node[left] {$Y$};
+%\foreach \x\xtext in
+%{-5/-5,5/5,{\xb}/\xb,{\xa}/\xb} %
+
+%\draw (\x,0.1) -- (\x,-0.1) node[below] {$\xtext$};
+%\draw[domain=-5:5, help lines, smooth, red]
+%plot ({\x},{0.2*(\x-\xa)*(\x-\xb)});
+
+%\begin{axis}[	title = График фнукции,
+	%xlabel = {$x$},
+	%ylabel = {$y$},
+	%minor tick num = 1 ]
+%\addplot[blue] {x^3 - 0.5*x^2 -3.5*x-3};
+%\end{axis}
+
+\end{scope}
+\end{tikzpicture}
+
+
+
+
+\end{document}
