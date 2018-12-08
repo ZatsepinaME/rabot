@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в формулах
+\usepackage[english]{babel}
+\usepackage[russian]{babel}
+%\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AM
+\usepackage{tikz}
+
+\title {Практическая работа №4}
+\author{Зацепина МЕ}
+%\maketitle
+%конец преамбулы
+\begin{document}
+	\maketitle
+	\textbf{Задание: Молекула метана}\\[11pt]
+	
+	\maketitle
+		Решение:\\
+		h1=\left(\begin{array}{c}0\\0\\0\\0\end{array}\right), 
+		h2 =\left(\begin{array}{c}-2.6\\5.2\\1.5\\0\end{array}\right),
+		h3 =\left(\begin{array}{c}2.6\\5.2\\-1.5\\0\end{array}\right),
+		h4 =\left(\begin{array}{c}-2.4\\3.5\\-4.2\\6\end{array}\right).
+		C =\left(\begin{array}{c}-0.6\\3.5\\-1.1\\1.5\end{array}\right).\\
+		\\
+		\\
+			\begin{tikzpicture}
+
+%\begin{sсope}[xscale=6,yscale=6]
+\draw[rounded corners=4pt,color=white,ball color=gray,smooth] (0,0) circle (1.6) node {1}; %1
+\draw[rounded corners=4pt,color=white,ball color=gray,smooth] (-2.6, 1.5) circle (1.6) node {2}; %2
+\draw[rounded corners=4pt,color=white,ball color=gray,smooth] (2.6,-1.5) circle (1.6) node {3}; %3
+
+\draw[rounded corners=4pt,color=white,ball color=red,smooth] (-0.6,-1,1) circle (2.6) node {1}; %1
+\draw[rounded corners=4pt,color=white,ball color=gray,smooth] (-2.4,-4.2) circle (1.6) node {4}; %4
+%\end{sсope}
+\end{tikzpicture}
+\end{document}
+
+
+
