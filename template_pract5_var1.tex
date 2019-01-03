@@ -1,0 +1,100 @@
+\documentclass{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{tikz}
+\usepackage[european,cuteinductors,smartlabels]{circuitikz}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{amsmath}
+\DeclareMathOperator*{\sumt}{\displaystyle \sum_{i=0}^{7}}
+\DeclareMathOperator*{\prodn}{\displaystyle \prod_{i=0}^{7}}
+\title{Практическая работа №5}
+\author{студент:Зацепина М.Е.    группы №8871   }
+% Конец преамбулы
+\begin{document}
+\maketitle
+Дана функция (ДНФ):
+$$
+F=(BC+AB\overline{C} + A\overline{B}C)
+$$
+
+Задание: 
+\begin{itemize}
+\item 1. Составление таблицы истинности.
+\item 2. Вычисление СДНФ.
+\item 3. Вычисление СКНФ.
+\item 4. Составление Карты Карно.
+\end{itemize}
+Решение: 
+\begin{itemize}
+	\item 1. Составление таблицы истинности.
+	
+	
+	\begin{table}[ht]
+	\tiny
+		\centering%центрируем таблицу	
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+			\toprule
+			\multirow{2}{*}{в 10-тичной}\\ cистеме} &\multicolumn{3}{|c|}{аргументы}&\multicolumn{3}{|c|}{$F1=BC$}& \multicolumn{4}{|c|}{$F2=AB\overline{C}$}& \multicolumn{4}{|c|}{$F3=A\overline{B}C$}& \multirow{1}{*}{$F$}& 
+			\multicolumn{2}{|c|}{в алгебраической форме}\\
+			\cmidrule{2-18}&
+	\multicolumn{1}{|c|}{$A$} & 
+	\multicolumn{1}{|c|}{B} & 
+	\multicolumn{1}{|c|}{C} & 
+	\multicolumn{1}{|c|}{\overline{B}} & 
+	\multicolumn{1}{|c|}{\overline{C}} & 
+	\multicolumn{1}{|c|}{$f1$} &
+	\multicolumn{1}{|c|}{$\overline{A}$} & 
+	\multicolumn{1}{|c|}{$\overline{B}$} & 
+	\multicolumn{1}{|c|}{C} & 
+	\multicolumn{1}{|c|}{$f2$} &
+	\multicolumn{1}{|c|}{$\overline{A}$} & 
+	\multicolumn{1}{|c|}{$B$} & 
+	\multicolumn{1}{|c|}{$\overline{C}$} & 
+	\multicolumn{1}{|c|}{$f3$} &
+	&
+			\multicolumn{1}{|c|}{дизъюнкции}& 
+			\multicolumn{1}{|c|}{конъюнкции}\\
+			\midrule 
+			0 & 0 & 0 & 0  & 1& 1& 0&  1& 1& 0& 0&  1& 0& 1& 0& 0& $A+B+C$ & $\overline{A}\overline{B}\overline{C}$\\
+			1 & 0 & 0 & 1  & 1& 0& 0&  1& 1& 1& 0&  1& 0& 0& 0& 0& $A+B+\overline{C}$ & $\overline{A}\overline{B}{C}$\\
+			2 & 0 & 1 & 0  & 0& 1& 0&  1& 0& 0& 0&  1& 1& 1& 0& 0& $A+\overline{B}+C$ & $\overline{A}{B}\overline{C}$\\
+			3 & 0 & 1 & 1  & 0& 0& 1&  1& 0& 1& 0&  1& 1& 0& 0& 1& $A+\overline{B}+\overline{C}$ & $\overline{A}{B}{C}$\\ 
+			4 & 1 & 0 & 0  & 1& 1& 0&  0& 1& 0& 0&  0& 0& 1& 0& 0& $\overline{A}+B+C$ & ${A}\overline{B}\overline{C}$\\ 
+			5 & 1 & 0 & 1  & 1& 0& 0&  0& 1& 1& 0&  0& 0& 0& 1& 1& $\overline{A}+B+\overline{C}$ & ${A}\overline{B}{C}$\\
+			6 & 1 & 1 & 0  & 0& 1& 0&  0& 0& 1& 1&  0& 1& 1& 0& 1& $\overline{A}+\overline{B}+C$ & ${A}{B}\overline{C}$\\ 
+			7 & 1 & 1 & 1  & 0& 0& 1&  0& 0& 1& 0&  0& 1& 0& 0& 1& $\overline{A}+\overline{B}+\overline{C}$ & ${A}{B}{C}$\\ 
+			\bottomrule 
+		\end{tabular}
+		\caption{Элементарные конъюнкции и дизъюнкции}
+	\end{table} 
+
+	
+	\item 2. Вычисление СДНФ.\\[12pt]
+    
+	$f=\overline{A}{B}{C}+{A}\overline{B}{C}+{A}{B}\overline{C}+{A}{B}{C}=\sumt (3,5,6)$ \\
+	\item 3. Вычисление СКНФ.\\[12pt]
+	$f=(A+B+C)(A+B+\overline{C})(A+\overline{B}+C)(\overline{A}+B+C)=\prodn (0,3,5,6,7)$\\
+	\item 4. Составление Карты Карно.
+\end{itemize}
+\begin{tikzpicture}
+\draw (0,0) rectangle (1,1) rectangle (2,0) 
+(0,1) rectangle (1,2) rectangle (2,1) 
+(2,0) rectangle (3,1) rectangle (4,0) 
+(2,1) rectangle (3,2) rectangle (4,1)
+(2,2.4) -- (4,2.4) node[right] {$A$}
+(1,2.2) -- (3,2.2) node[right] {$B$}
+(-0.4,1) -- (-0.4,0) node[below] {$C$};
+\filldraw[blue!40!white, draw=black] (0,0) rectangle (1,1) 
+(0,1) rectangle (1,2) 
+(1,1) rectangle (2,2) 
+(3,1) rectangle (4,2);
+\draw (0.5,1.5) node {0} (1.5,1.5) node {2} (2.5,1.5) node {6} (3.5,1.5) node {4}
+(0.5,0.5) node {1} (1.5,0.5) node {3} (2.5,0.5) node {7} (3.5,0.5) node {5};
+\end{tikzpicture}
+
+
+
+\end{document}
