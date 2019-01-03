@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{tikz}
+\usepackage[european,cuteinductors,smartlabels]{circuitikz}
+\usepackage{tikz}
+\usepackage[european,cuteinductors,smartlabels]{circuitikz}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{amsmath}
+
+\title{Практическая работа №5}
+\author{студент: Зацепина М.Е.    группы № 8871   }
+% Конец преамбулы
+\begin{document}
+\maketitle
+
+Задание: Нарисовать электрическую схему.
+
+Решение: \\[20pt]
+
+	
+	\begin{circuitikz}
+		\tiny
+		\draw (1.5,0) -- (1.5,-1);
+		\draw (0,-3) to [C, l_={$C$},*-*] (3,-3);
+		\draw (0,-3) to [R, l={$R$},*-*] (1.5,-1);
+		\draw (1.5,-1) to [L, l={$L_1$},*-*] (3,-3);
+		
+		\draw (1.5,0) -- (8,0);
+		\draw (3,-3) -- (3,-4);
+		\draw (3,-4) -- (7,-4);
+		\draw (0,-3) -- (0,-5);
+		\draw (0,-5) -- (9,-5);
+		\draw (8,0) to [L, l={$L_2$},*-*] (8,-2);
+		\draw (8,-2)  to [L, l,*-*] (7,-4);
+		\draw (8,-2) to [L, l={$L_4$},*-*] (9,-4);
+		\draw (9,-4) -- (9,-5);
+	%	\rotatebox[$L_3$]{60}{$L_3$} node [left] at (7.2,-2.5);
+		\draw[thin,dotted] (7,-4) -- (8,-2) node[pos=0.68,sloped, above]  {$L_3$};
+	\end{circuitikz}
+
+
+
+\end{document}
