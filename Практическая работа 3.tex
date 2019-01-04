@@ -1,17 +1,20 @@
 \documentclass{article}
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
-\usepackage[russian]{babel}
+\usepackage[english,russian]{babel}
+\usepackage[european,cuteinductors,smartlabels]{circuitikz}
+\usepackage{amssymb,amsmath,amsfonts,latexsym,mathtext}
+\usepackage{tikz}
+\usepackage{pgffor}
 %\usepackage{icomma}
 %построение графика
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.9}
+\pgfplotsset{compat=1.9}%используемую версию ( указана версия 1.9)
 
 \title {Практическая работа №3}
 \author{Зацепина МЕ}
 %определение стиля
-\pgfplotsset{model/.style = {blue, samples = 50}, title = График нелинейной функции}
+\pgfplotsset{model/.style = {blue, samples = 50}, title = График нелинейной функции}% точек разбиения =50
 \begin{document}
 	\maketitle
 	\textbf{Задание: Построение графика функции}\\ [11pt]
@@ -26,44 +29,28 @@
 		\begin{axis}[
 		height = 0.7\paperheight, 
 		width = 0.7\paperwidth,
-		xmin = -6, ymax = 150,
+		xmin = -15, ymax = 120,
 		legend pos = north west,
 		xlabel = {$x$},
 		ylabel = {$y$},
 		grid=major]
+		\addplot[thick,model,mark=*,mark options={scale= 0.5, fill = black, draw = green}] {x^3+x^2*0.5-x*3.5-3};
+	%\addplot[thick,model,mark=*,mark options={fill = black, draw = green}] {(x^3)+((x^2)*0.5)-x*3.5-3};
+		\addplot[thick,mark options={scale= 0.5}] {10.5*(\x)-21}; % y (х=2)
+	%	\addplot[thick,mark options={scale= 0.5}] {13*(\x)-15.5}; %y' (x=2)
+	%	\addplot[smooth, red,mark options={scale= 0.5}] {0.5*(\x)-5.5}; % y (х=1)
+	%	\addplot[smooth, red,mark options={scale= 0.5}] {7*(\x)-6.5};   %y' (x=1)
+		
 	
-		%[
-		%title = График,
-		
-		%minor tick num = 2 %миним метка
-	%	]
-		\addplot[thick, model, mark=*,
-		mark options={scale = 0.8, fill = black, draw = green}] {x^3+x^2*0.5-x*3.5-3};
-		\addplot coordinates { (1.5,-3.75) (2.29,4.75)};
-		%\addplot coordinates { (1.5,-3.75) (1.025,10)};
-	%\addplot[blue] {x^2*0.5-x*3.5-3};
-		\legend{ $y=x^3+x^2*0.5-x*3.5-3$};
-		\end{axis}
-	    %закончено построение графика
-		%\begin{scope} [scale=0.5]
-  	   % \begin{math}
-  	    %осьХ
-  	    %\draw[->,black,thick](-5,0) -- (10,0) node (xaxis) [below right] {$x$};
-  	   % \foreach \x in {-5, ..., -1}
-  	    %\draw[shift={(\x,0)},color=darkgray,thin] (0pt,4pt) -- (0pt,-5pt) node[below] {\footnotesize $\x$};
-  	    %\foreach \x in {1, ..., 9}
-  	   % \draw[shift={(\x,0)},color=darkgray,thin] (0pt,4pt) -- (0pt,-5pt) node[below] {\footnotesize $\x$};
-  	    %\end{math}
-  	    %осьУ
-  	   % \begin{math}
-  	   % \draw[->,black,thick](0,-10) -- (0,10) node[left] {$y$};
-  	   % \foreach y in {1, ..., 8}
-  	   % \draw[shift={(0,y)},color=darkgray,thin] (-4pt,0pt) -- (5pt,0pt) node[left \,\,] {\footnotesize $\y$};
-  	   % \end{math}
-  	    %клетка
-  	    %\draw[loosely dotted] (-9,-25) grid (9,15);
-  	    
-	%	\end{scope}
-		
+	
+			\foreach \x in {0,2,...,5}
+	{
+		%\draw[domain=1:30, help lines, scale= 0.5, smooth, red]	plot ({\x},{7*(\x)-6.5});% построенная линия -касательная не касается графика, а проходит на расстоянии 
+		\draw[domain=-1:20, help lines, scale= 0.5, smooth, red]	plot ({\x},{13*(\x)-15.5}); %% построенная линия -касательная не касается графика, а проходит на расстоянии
+	}
+	\legend{ $y=x^3+x^2*0.5-x*3.5-3$};
+	\end{axis}
 	\end{tikzpicture}
+	
+	
 \end{document}
