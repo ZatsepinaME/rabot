@@ -1,0 +1,581 @@
+
+
+%\documentclass[a4paper,russian]{article}
+%\usepackage[T2A]{fontenc}
+%\usepackage[T2A]{fontenc}
+%\usepackage[utf8x]{inputenc}
+%\usepackage{pscyr}
+%\usepackage[english, russian]{babel}
+
+
+
+
+\documentclass[russian,utf8,nocolumnxxxi,nocolumnxxxii]{eskdtext}
+	
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage[utf8x]{inputenc}
+%\usepackage[english,ukrainian,russian]{babel}
+\usepackage{amssymb,amsmath}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{tikz}
+\usepackage{siunitx}
+\usepackage[american,cuteinductors,smartlabels]{circuitikz}
+\usepackage{indentfirst} % Красная строка
+\usepackage{graphicx}
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+%\usepackage[backend=biber]{biblatex}
+%\addbibresource{error_estimation_otchet.bib}
+\usepackage{mathtools}
+%\mathtoolsset{showonlyrefs}
+%\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+\usepackage[]{hyperref}
+\hypersetup{
+	colorlinks=true,
+}
+\usepackage{multirow}
+\usepackage{textcomp}
+\newcommand{\No}{\textnumero}
+
+\ESKDdepartment{Федеральное агентство по образованию}
+\ESKDcompany{Санкт-Петербургский государственный электротехнический университет "ЛЭТИ"}
+\ESKDtitle{Пояснительная записка по дисциплине "Информатика"}
+\ESKDdocName{Вариант №7}
+	\ESKDsignature{Курсовая работа}
+	\ESKDauthor{Зацепина~МЕ}
+	\ESKDchecker{Прокшин~АН}
+	
+   \begin{document}
+   %	\maketitle
+ 	
+    \maketitle
+    \tableofcontents
+    \newpage
+     \section{Вступление}
+    \itshape{\Large Цель курсовой работы:}\\[4pt]
+    \rmfamily{уметь применять персональный компьютер и математические пакеты прикладных программ в инженерной деятельности}\\[18pt]
+    ${\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,}$\itshape{\Large Тема курсовой работы:}\\[4pt]
+    \rmfamily{решение математических задач с использованием математического пакета "Scilab" и "Smath".}\\
+    
+    \newpage
+    \section{ Основная часть}
+     \subsection{Задание на курсовую работу}
+     \upshape{\normalsize 1. Даны функции:}\\[4pt]
+     {\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,} {$f{(x)}$ = \sqrt{3}sin(x) + cos(x), {\,}$и$ \\
+     {g{(x)} = cos(2∙{x} + {\pi}/3)-1}\\[7pt]
+    $ a)	Решить уравнение {$f{(x)}$ = ${g(x).}$ $\\
+    $ b)	Исследовать функцию $h{(x)}$ = $f{(x)}$ – $g{(x)}$ на промежутке [0 ; (5∙\pi)/6].$\\ [10pt]
+     \upshape{\normalsize 2. Найти коэффициенты кубического сплайна, интерполирующего данные, представленные в векторах $\vec{V}_x$ и $\vec{V}_y$. \\
+     Построить на одном графике функцию $f(x)$ и функцию $f_1(x)$, полученную после нахождения коэффициентов кубического сплайна.\\
+     Представить графическое изображение результатов интерполяции исходных данных различными методами с использованием встроенных функций $cspline(V_x,V_y)$, $pspline(V_x,V_y)$, $lspline(V_x,V_y)$ и $interp(V_k,V_x,V_y,x)$.}\\[4pt]
+     \upshape{\normalsize 3. Решить задачу оптимального распределения неоднородных ресурсов.}\\
+     Исходные данные представлены в таблице 1.
+     
+     \begin{table}[ht]
+     	\caption{ }\label{tab:tab1}
+     	\centering%центрируем таблицу	
+     	 \begin{tabular}{|1|1|1|1|1|1|}
+     		%\toprule
+     		\hline
+     		%	\multirow{2}{*}{Используемые ресурсы, $a_i$}&
+     	%	\multicolumn{4}{|c|}{Изготавливаемые изделия}& 
+     	%	\multirow{1}{c|}{Наличие ресурсов, $a_i$}\\
+     		 		%\cmidrule{1-5}&
+     	%	\multicolumn{1}{|c|}{И_1}&
+     	%	\multicolumn{1}{|c|}{И_2}&
+     	%	\multicolumn{1}{|c|}{И_3}&
+     	%	\multicolumn{1}{|c|}{И_4}&\\
+     		% \hline
+     	%	\midrule 
+     	Используемые ресурсы, {$a_i$}& \multicolumn{4}{|c|}{Изготавливаемые изделия}& Наличие ресурсов,{$a_i$}\\
+      & \multicolumn{1}{|c|}{И_1}&
+      \multicolumn{1}{|c|}{И_2}&
+      \multicolumn{1}{|c|}{И_3}&
+      \multicolumn{1}{|c|}{И_4}& } \\
+     		\hline
+     		Трудовые & 2 & 4 &  2 & 9& 20 \\
+     		\hline
+     		Материальные & 5 & 5 &  5 & 6 & 10\\
+     		\hline
+     		Финансовые & 5 & 6 &  4 & 8& 30\\
+     		\hline
+     		Прибыль & 25 & 45 & 60 & 20& \\ 
+     		%\bottomrule
+     		\hline
+     	\end{tabular}
+     	
+     \end{table} 
+     
+     \newpage
+     \subsection{Решение уравнения и исследование функции}
+     	a) {$f{(x)} = g{(x)}$}\\
+    \sqrt{3}sin(x) + cos(x)= cos(2∙{x} + \frac{\pi}{3})-1}\\[7pt]
+     	
+     	\begin{tabular}{1|1}
+     	$\sqrt{3}sin(x) + cos(x)=0$ & $cos(2∙{x} +\frac{\pi}{3})-1=0$\\
+     $\sqrt{3}tg(x) + 1=0 & $2∙{x} + \frac{\pi}{3}=arccos{(1)}}$\\
+     $tg(x) =-\frac{1}{\sqrt{3}}=-\frac{\sqrt{3}}{3}}$ &
+    $2∙{x} + \frac{\pi}{3}=0$ \\
+        & $2∙{x} = -\frac{\pi}{3}$  \\
+    $x =-\frac{\pi}{6}+2\pi{k},$ & ${x} =-\frac{\pi}{6}+2\pi{k},$\\
+где $ {k} \in {Z}. & где $ {k} \in {Z}.
+     	\end{tabular}\\[35pt]
+     	
+     		$ b)$	Исследовать функцию $h{(x)}$ = $f{(x)}$ – $g{(x)}$ на промежутке [0 ; $\frac{5{\pi}}{6}$].$\\
+     
+     \textbf{ 1.Область определения функции}\\
+      Выражение имеет смысл при любом значении ${x}$ на интервале [0 ; $\frac{5{\pi}}{6}$].\\
+      
+       \textbf{2.Четность, нечетность функции}\\[10pt]%\label{}% 
+       Функция четная, если $y(-x) = y(x)$. \, Функция нечетная, если $y(-x) = -y(x)$. 
+       \begin{align*}
+       h(x)$=$\sqrt{3}sin(x) + cos(x)$–$(cos(2{x} + {\frac{\pi}{3})-1})
+       \end{align*}
+       \begin{equation}\label{eq:num1}
+       \begin{aligned}
+       {h(x)}=\sqrt{3}sin(x)+cos(x)$–$cos(2{x})cos{\frac{\pi}{3}}+sin(2{x})sin{\frac{\pi}{3}}+1})
+    \end{aligned}
+    \end{equation}\\
+    %\begin{equation}
+    \begin{aligned}
+    	\begin{multiline}
+    		{h(-x)}=\sqrt{3}sin(-x)+cos(-x)-cos({-2x})cos{\frac{\pi}{3}}-sin({-2x})sin{\frac{\pi}{3}}+1}
+    \end{multiline}
+\end{aligned}
+%\end{equation}
+\begin{equation}\label{eq:num2}
+\begin{aligned}
+{h(-x)}=-\sqrt{3}sin(x)+cos(x)$–$cos({2x})cos{\frac{\pi}{3}}-sin({2x})sin{\frac{\pi}{3}}+1}
+\end{aligned}
+\end{equation}
+\textbf{Таким образом,} ${h(-x)}\neq {h(x)},$ и ${h(-x)}\neq {-h(x)},$ следовательно функция ${h(x)}$ не обладает свойствами четности и нечетности.
+
+\newpage
+      \textbf{3.Нули функции}\\
+      \begin{equation}\label{eq:num3}
+         \begin{aligned}
+         h{(x)} =0
+         \end{aligned}
+      \end{equation}
+      Полученные из уравнения \eqref{eq:num3} значения ${x}$ - это точки пересечения функции {$h(x)$} с осью ОХ.\\
+      \begin{equation}\label{eq:num4}
+      \begin{aligned}
+      \sqrt{3}sin(x) + cos(x)$–$(cos(2{x} + {\frac{\pi}{3})-1})=0
+      \end{aligned}
+      \end{equation}
+    \\[8pt]
+    \left{  
+      \begin{equation}\label{eq:num5}
+      	      		\begin{aligned}
+      	\sqrt{3}sin(x)+cos(x)={2}$\sqrt{3}sin(\frac{x}{2})cos(\frac{x}{2})$+$cos^2(\frac{x}{2})$-$sin^2(\frac{x}{2}) \hspace{153}   
+      	\end{aligned}
+       	\end{equation}
+    }\\[10pt]
+    Разделим выражение \eqref{eq:num5} на {cos^2({\frac{x}{2}})}.\\[10pt]
+    \left{  
+    	\begin{equation}\label{eq:num6}
+    	\begin{aligned}
+    	\sqrt{3}sin(x)+cos(x)={2}$\sqrt{3}tg(\frac{x}{2})+1-$tg^2(\frac{x}{2}) \hspace{230}   
+    	\end{aligned}
+    	\end{equation}
+    }
+       \left{  
+      	\begin{equation}\label{eq:num7}
+      \begin{multiline}
+      \begin{aligned}
+      cos(2{x}&+\frac{\pi}{3})-1=
+      -(1-cos(2{x}+{\frac{\pi}{3}}))=
+      -2sin^2({x}+{\frac{\pi}{6}})=\\=
+     	-2&({\frac{\sqrt{3}}{2}}sin({x})+{\frac{1}{2}}cos({x}))^2=\\=
+     	-2&({\frac{\sqrt{3}}{2}}2sin({\frac{x}{2}})cos({\frac{x}{2}})+{\frac{1}{2}}cos^2({\frac{x}{2}})-{\frac{1}{2}}sin^2({\frac{x}{2}}))^2=\\=
+     	-2&({\sqrt{3}}sin({\frac{x}{2}})cos({\frac{x}{2}})+{\frac{1}{2}}cos^2({\frac{x}{2}})-{\frac{1}{2}}sin^2({\frac{x}{2}}))^2\hspace{185}
+      \end{aligned}
+      \end{multiline}
+      \end{equation}
+    }
+      \\[10pt]
+      Разделим выражение \eqref{eq:num7} на {cos^2({\frac{x}{2}})}:\\[8pt]
+      \left{  
+      	\begin{equation}\label{eq:num8}
+      	\begin{aligned}
+      	cos(2{x}+\frac{\pi}{3})-1=-2({\sqrt{3}}tg({\frac{x}{2}})+{\frac{1}{2}}-{\frac{1}{2}}tg^2({\frac{x}{2}}))^2\hspace{190}
+      	\end{aligned}
+      	\end{equation}
+      	}\\[8pt]
+       Тогда, подставляя выражения \eqref{eq:num7} и \eqref{eq:num8} в \eqref{eq:num4} :
+       \begin{align}\label{eq:num9}
+       {2}$\sqrt{3}tg(\frac{x}{2})+1-$tg^2(\frac{x}{2})+2({\sqrt{3}}tg({\frac{x}{2}})+{\frac{1}{2}}-{\frac{1}{2}}tg^2({\frac{x}{2}}))^2=0
+       \end{align}
+       Заменим $tg(\frac{x}{2})=t.$
+       \begin{align}\label{eq:num10}
+       (2\sqrt{3}t+1-t^2)+2({\sqrt{3}}t+{\frac{1}{2}}-{\frac{1}{2}}t^2)^2=0
+       \end{align}
+       \begin{align}\label{eq:num11}
+       2(\sqrt{3}t+{\frac{1}{2}}-{\frac{1}{2}}t^2)+2({\sqrt{3}}t+{\frac{1}{2}}-{\frac{1}{2}}t^2)^2=0
+       \end{align}
+       \begin{align}\label{eq:num12}
+       (\sqrt{3}t+{\frac{1}{2}}-{\frac{1}{2}}t^2)(2+2({\sqrt{3}}t+{\frac{1}{2}}-{\frac{1}{2}}t^2)=0
+       \end{align}
+       \begin{align*}
+       (\sqrt{3}t+{\frac{1}{2}}-{\frac{1}{2}}t^2)(2+2({\sqrt{3}}t+{\frac{1}{2}}-{\frac{1}{2}}t^2)=0
+       \end{align*}
+       \begin{align*}
+       (\sqrt{3}t+{\frac{1}{2}}-{\frac{1}{2}}t^2)(2+2{\sqrt{3}}t+1-t^2)=0
+       \end{align*}
+    \begin{align}\label{eq:num13}
+    (\sqrt{3}t+{\frac{1}{2}}-{\frac{1}{2}}t^2)(3+2{\sqrt{3}}t-t^2)=0
+    \end{align}
+    Найдем корни уравнения \eqref{eq:num13}, для этого решим систему:\\
+    \begin{equation}\label{eq:num14}
+     \begin{align}
+    \left\{
+    \begin{aligned}
+    -2\sqrt{3}t-1+t^2&=0\\
+    -3-2{\sqrt{3}}t+t^2&=0
+    \end{aligned}\right
+    \end{align}
+        \end{equation}
+    \newpage
+     Корни уравнений:\\
+     \begin{equation}\label{eq:num15}
+     \begin{aligned}
+     \left\{
+     \begin{aligned}
+     {t_1}&={\sqrt{3}+{\sqrt{2}}\\
+     {t_2}&={\sqrt{3}}-{\sqrt{2}}\\
+     {t_3}&={\sqrt{3}}+{\sqrt{6}}\\
+     {t_4}&={\sqrt{3}}-{\sqrt{6}}
+     \end{aligned}\right
+     \end{aligned}
+     \end{equation}    \\  
+      \begin{equation}\label{eq:num16}
+      \begin{aligned}
+      \left\{
+      \begin{aligned}
+      {tg{\frac{x}{2}&={\sqrt{3}+{}\sqrt{2}}\\
+      	{tg{\frac{x}{2}&={\sqrt{3}}-{\sqrt{2}}\\
+      {tg{\frac{x}{2}&={\sqrt{3}}+{\sqrt{6}}\\
+      {tg{\frac{x}{2}&={\sqrt{3}}-{\sqrt{6}}
+    \end{aligned}\right
+    \end{aligned}
+    \end{equation}\\
+    \begin{equation}\label{eq:num17}
+    \begin{aligned}
+    \left\{
+    \begin{aligned}
+    {x}&=2arctg({\sqrt{3}+\sqrt{2}}); \,{x}\in[{-\frac{\pi}{2}};0]\\
+    	{x}&=2arctg({\sqrt{3}-\sqrt{2}}); \,{x}\in[{-\frac{\pi}{2}};0]\\	{x}&=2arctg({\sqrt{3}+\sqrt{6}}); \,{x}\in[{-\frac{\pi}{2}};0]\\
+    	{x}&=2arctg({\sqrt{3}-\sqrt{6}}); \,{x}\in[{-\frac{\pi}{2}};0]\\
+    	\end{aligned}\right
+    	\end{aligned}
+    \end{equation}\\
+   На интервале [0 ; $\frac{5{\pi}}{6}$] график функции ${h(x)}$ не пересекает ось ОХ. \\
+      %в точках с абциссами, определяемыми уравнением ${h(x)}=0$, то есть в точках:\\
+      %${x}&=2arctg({\sqrt{3}}-{\sqrt{2}});$\\
+      %${x}&=2arctg({\sqrt{3}}-{\sqrt{6}}).$
+        
+      \textbf{4. Промежутки знакопостоянства}\\
+     Если функция положительна на интервале - график расположен выше оси абсцисс; если функция отрицательна - график ниже оси абсцисс. \\[10pt]
+     $h{(0)} =\sqrt{3}sin(0) + cos(0)$–$(cos(2\cdot{0} + {\frac{\pi}{3})-1})=$\\
+     $={0}+{1}$–$cos({\frac{\pi}{3}})+1={\frac{3}{2}}> 0;$\\
+     $h{({\frac{5\pi}{6}})} =\sqrt{3}sin({\frac{5\pi}{6}}) + cos({\frac{5\pi}{6}})$–$(cos(2\cdot{{\frac{5\pi}{6}}} + {\frac{\pi}{3})-1})=$\\
+     $=\sqrt{3}\cdot{\frac{\sqrt{3}}{2}}$- ${\frac{\sqrt{3}}{2}}$–$1+1={\frac{3-{\sqrt{3}}}{2}}> 0$\\[10pt]
+     \textbf{Таким образом,} функция ${h(x)}$ положительна на интервале [0 ; $\frac{5{\pi}}{6}$],следовательно, график расположен выше оси абсцисс.\\
+     
+      \textbf{5. Промежутки возрастания и убывания функции.}\\
+      Если ${f'(x)}>0$ на промежутке, то ${f(x)}$ возрастает на этом промежутке.\\
+      Если ${f'(x)}<0$ на промежутке, то ${f(x)}$ убывает на этом промежутке.\\[10pt]
+      Первая производная ${h'(x)}$ от функции ${h(x)}$ (с учетом замены на {t}) имеет вид:\\
+      \begin{aligned}
+      (2\sqrt{3}t&-2t)(3+2\sqrt{3}t-t^2)+(2\sqrt{3}-2t)(2\sqrt{3}t+1-t^2)=0\\
+      (2\sqrt{3}t&-2t)(3+2\sqrt{3}t-t^2+2\sqrt{3}t+1-t^2)=0\\
+      (2\sqrt{3}t&-2t)(4-2t^2+4\sqrt{3}t)=0
+      \end{aligned}\\
+      \begin{equation}\label{eq:num18}
+      \begin{align}
+      2(\sqrt{3}t&-t)2(2-t^2+2\sqrt{3}t)=0
+      \end{align}
+      \end{equation}
+      Найдем корни уравнения \eqref{eq:num18}, для этого решим систему:\\
+      \begin{equation}\label{eq:num19}
+      \begin{align}
+      \left\{
+      \begin{aligned}
+      &t(\sqrt{3}-1)=0\\
+      & 2-t^2+2\sqrt{3}t=0
+      \end{aligned}\right
+      \end{align}
+      \end{equation}
+      Корни уравнений:\\
+      \begin{equation}\label{eq:num20}
+      \begin{aligned}
+      \left\{
+      \begin{aligned}
+      {t_1}&={0}}\\
+      	{t_2}&={\sqrt{3}}-{\sqrt{5}}\\
+      	{t_3}&={\sqrt{3}}+{\sqrt{5}}
+      \end{aligned}\right
+      	\end{aligned}
+      	\end{equation}    \\  
+      	\begin{equation}\label{eq:num21}
+      	\begin{aligned}
+      	\left\{
+      	\begin{aligned}
+      	{tg{\frac{x}{2}&={0}\\
+      			{tg{\frac{x}{2}&={\sqrt{3}}-{\sqrt{5}}\\
+      					{tg{\frac{x}{2}&={\sqrt{3}}+{\sqrt{5}}
+      									\end{aligned}\right
+      									\end{aligned}
+      									\end{equation}\\
+      \begin{equation}\label{eq:num22}
+      \begin{aligned}
+      \left\{
+      \begin{aligned}
+      {x}&=0;\,{x}\in[{0;\frac{5\pi}{6}}]\\
+      {x}&=2arctg({\sqrt{3}-\sqrt{5}}); \,{x}\in[{-\frac{\pi}{2}};0]\\	{x}&=2arctg({\sqrt{3}+\sqrt{5}}); \,{x}\in[{-\frac{\pi}{2}};0]      
+      \end{aligned}\right
+      \end{aligned}
+      \end{equation}
+      %\begin{equation}
+      \begin{align*}
+       {h'(x)}=2[\sqrt{3}tg({\frac{x}{2}})-tg({\frac{x}{2}})]\cdot2[2-tg^2({\frac{x}{2}})+2\sqrt{3}tg({\frac{x}{2}})]=0\hspace{150}
+      \end{align*}
+     %\end{equation}\\
+     \begin{equation}\label{eq:num23}
+     \begin{align}
+     {h'({0})}=0 \hspace{420}
+     \end{align}
+     \end{equation}\\
+     При $[-\infty;0]$ производная ${h'(x)}<0$, следовательно функция ${h(x)}$ убывает на промежутке [0 ; $\frac{5{\pi}}{6}$].\\
+     При $[0;+\infty]$ производная ${h'(x)}>0$, следовательно функция ${h(x)}$ возрастает на промежутке [0 ; $\frac{5{\pi}}{6}$].\\
+     
+      \textbf{6. Выпуклость графика функции, точки перегиба}\\
+     Функция ${f(x)}$ выпукла вниз, если ${f'(x)}$ возрастает на промежутке, \\
+     при этом  ${f"(x)}>0$.\\
+      Функция ${f(x)}$ выпукла вверх, если ${f'(x)}$ убывает на промежутке, \\
+      при этом  ${f"(x)}<0$.\\[10pt]
+     Вторая производная ${h"(x)}$ от функции ${h(x)}$ (с учетом замены на {t}) имеет вид:\\
+     \begin{equation}\label{eq:num24}
+     \begin{align}
+     h'(x)=2(\sqrt{3}t-t)\cdot2(2-t^2+2\sqrt{3}t)=0
+     \end{align}
+     \end{equation}
+      \begin{equation}\label{eq:num25}
+      \begin{align}
+      h'(x)=8\sqrt{3}t-4\sqrt{3}t^3+24t^2-8t+4t^3-8\sqrt{3}t^2
+      \end{align}
+      \end{equation}
+       \begin{equation}\label{eq:num26}
+       \begin{align}
+       h"(x)=8\sqrt{3}-12\sqrt{3}t^2+48t-8+12t-16\sqrt{3}t
+       \end{align}
+       \end{equation}
+       $\sqrt{D}<0$, значит точек перегиба нет, $h"(x)$ не обращается в ноль.
+       \begin{equation}\label{eq:num27}
+       \begin{align}
+       h"(0)=8\sqrt{3}-8\,\,>0
+       \end{align}
+       \end{equation}
+       \textbf{Таким образом,} $h"(x)>0$ и ${h'(x)}$ возрастает на промежутке, значит
+       функция ${h(x)}$ выпукла вниз.\\
+       График функции ${h(x)}$ показан на рисунке 1. \\
+       \begin{center}
+       	\includegraphics[scale=2]{graph}
+       \end{center}
+       \begin{center}
+       	Рисунок 1 - График функции ${h(x)}$
+       \end{center}
+      \newpage
+      \subsection{Нахождение коэффициентов кубического сплайна}
+     \upshape
+      \subsubsection{Задания и исходные данные для решения} 
+      $ $1. Найти коэффициенты кубического сплайна, интерполирующего данные, представленные в векторах$\,\,  {\vec{V}_x} \,\,$и$\,\, {\vec{V}_y.}$ \\
+      $ {\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,}$2. Построить на одном графике: функцию$\,\, {f(x)}\,\, $и$\,\,  функцию {f_1(x)}, $полученную после нахождения коэффициентов кубического сплайна.$ $ \\
+      $ {\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,}$3. Представить графическое изображение результатов интерполяции исходных данных$ $.\\
+                       
+      $\vec{V}_x=\left(\begin{array}{c}0\\0.5\\1.4\\2.25\\3.5\end{array}\right),
+      \,\,\,\vec{V}_y=\left(\begin{array}{c}3.0\\2.7\\3.7\\3.333\\3.667\end{array}\right)$ \\\\
+      $ {\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,}$Необходимо оценить погрешность в точке $ {x = 2.4}. $\,\,\,\,\,Вычислить значение функции в точке $\,{x = 1.2}.$\\
+      \newpage
+      \newpage
+      \subsubsection{Теория и вывод уравнения сплайна}
+      Уравнение сплайна находится по пяти точкам\\
+      $(x_1;y_1), (x_2;y_2), (x_3;y_3), (x_4;y_4), (x_5;y_5)$\\
+      Представим сплайн полиномом третьей степени на каждом отрезке
+      $[x_i, x_{i+1}]$.
+      
+      \begin{equation}\label{eq:F_i(x)}
+      F_i(x)=A_{i0}+{A_{i1}}x+{A_{i2}}x^2+{A_{i3}}x^3,
+      \end{equation}
+      
+\      $где $x$ \in {\,} $[{x_i},{x_{i+1}}].$\\[4pt]
+      Найдем коэффициенты $A_{ij}$ исходя из того, что в точках склейки функция не имеет разрывов, изломов и изгиб ее слева и справа совпадает. \\
+      На каждом из отрезков $[x_i, x_{i+1}]$ график $F_i(x)$ проходит через точки $y_i$, $y_{i+1}.$
+      \begin{equation}\label{eq:y_i}
+      y_i=A_{i0}+{A_{i1}}{x_i}+{A_{i2}}{x_i}^2+{A_{i3}}{x_i}^3
+      \end{equation}
+            
+      Получаем $8$ уравнений:
+      \begin{equation}\label{eq:y1(x)}
+      \begin{aligned}
+      y_1=A_{10}+{A_{11}}{x_1}+{A_{12}}{{x_1}^2}+{A_{13}}{x_1}^3\\[4pt]
+      y_2=A_{10}+{A_{11}}{x_2}+{A_{12}}{x_2}^2+{A_{13}}{x_2}^3\\[4pt]
+      y_2=A_{20}+{A_{21}}{x_2}+{A_{22}}{x_2}^2+{A_{23}}{x_2}^3\\[4pt]
+      y_3=A_{20}+{A_{21}}{x_3}+{A_{22}}{x_3}^2+{A_{23}}{x_3}^3\\[4pt]
+      y_3=A_{30}+{A_{31}}{x_3}+{A_{32}}{x_3}^2+{A_{33}}{x_3}^3\\[4pt]
+      y_4=A_{30}+{A_{31}}{x_4}+{A_{32}}{x_4}^2+{A_{33}}{x_4}^3\\[4pt]
+      y_4=A_{40}+{A_{41}}{x_4}+{A_{42}}{x_4}^2+{A_{43}}{x_4}^3\\[4pt]
+      y_5=A_{40}+{A_{41}}{x_5}+{A_{42}}{x_5}^2+{A_{43}}{x_5}^3\\[4pt]
+      \end{aligned}
+      \end{equation}
+       Производные первого порядка во внутренних точках ${x_i}$ должны совпадать,
+       т.е. производная слева 
+       $${{F_i}^{'}}({x_i}) = A_{i1}+ 2{A_{i2}}{x_i}+ 3A_{i3}{{x_i}^2}$$
+        должна быть равна производной справа 
+        $${{F^{'}}_{(i+1)}}({x_i}) = {A_{{(i+1)}1}}+ 2{A_{{(i+1)}2}}{x_i}+ 3A_{{(i+1)}3}{{x_i}^2}$$
+      Физический смысл равенства производных состоит в том, что в точках склейки у нас нет излома сплайна.     
+    \begin{equation}\label{eq:y^{'}(x)}
+    \begin{aligned}
+    A_{11}+ 2A_{12}{x_2}+ 3A_{13}{{x_2}^2}=A_{21}+ 2A_{22}{x_2}+ 3A_{23}{{x_2}^2}\\
+    A_{21}+ 2A_{22}{x_3}+ 3A_{23}{{x_3}^2}=A_{31}+ 2A_{32}{x_3}+ 3A_{33}{{x_3}^2}\\
+    A_{31}+ 2A_{32}{x_4}+ 3A_{33}{{x_4}^2}=A_{41}+ 2A_{42}{x_4}+ 3A_{43}{{x_4}^2}\\ 
+    \end{aligned}
+    \end{equation}
+    
+      Производные второго порядка в точках склейки ${x_i}$ должны совпадать,
+      т.е. вторая производная слева 
+      $${{F_i}^{''}}{(x_i)} = 2{A_{i2}}+ 6{A_{i3}}{x_i}$$
+      должна быть равна второй производной справа 
+      $${{F^{''}}_{(i+1)}{(x_i)} =2{A_{{(i+1)}2}+ 6{A_{{(i+1)}3}}{x_i}$$
+         Физический смысл равенства вторых производных состоит в том, что в точках склейки изгиб сплайна справа и слева должен быть одинаковым.
+            
+      		\begin{equation}\label{eq:y^{'}(x)}
+      		\begin{aligned}
+      		2{A_{12}}+ 6{A_{13}}{x_2}=2{A_{22}}+ 6{A_{23}}{x_2}\\
+      		2{A_{22}}+ 6{A_{23}}{x_3}=2{A_{32}}+ 6{A_{33}}{x_3}\\
+      		2{A_{32}}+ 6{A_{33}}{x_4}=2{A_{42}}+ 6{A_{43}}{x_4}\\ 
+      		\end{aligned}
+      		\end{equation}
+      		
+      		Еще два уравнения - из граничных условий в крайних точках $x_1$, $x_n$:
+      	\begin{equation}\label{eq:F^{''}(x)=0}
+      	\begin{aligned}
+      	{C_{11}}{F^{'}}{x_1}+{C_{12}}+ {{F^{''}}{(x_1)}={C_{13}}\\
+      	C_{n1}{F^{'}}{n_1}+C_{n2}+ {{F^{''}}{(n_2)}=C_{n3}\\ 
+      	\end{aligned}
+      	\end{equation}
+      						
+      Найдем график сплайна в случае, когда концы сплайна оставлены
+   	свободными в граничных точках $(x1, y1)$, $(x5, y5)$. Соответственно, уравнения имеют вид:
+      	\begin{equation}\label{eq:F^{''}(x)}
+      	\begin{aligned}
+      	2A_{12}+ 6A_{13}{{x_1}=0\\
+      	2A_{42}+ 6A_{43}{{x_5}=0\\
+      	\end{aligned}
+      	\end{equation}
+      	В итоге - 16 уравнений для определения 16 коэффициэнтов $A_{ij}$ .	\\
+      	
+      		%\mathds{A} = \left(
+      	\\
+      		{\tiny
+      		
+      		\left(\begin{array}{cccccccccccccccc} 
+      			1&{x_1}&{x_1}^2&{x_1}^3&0&0&0&0&0&0&0&0&0&0&0&0\\
+      			1&{x_2}&{x_2}^2&{x_2}^3&0&0&0&0&0&0&0&0&0&0&0&0\\
+      			0&1&2{x_2}&3{x_2}^2&0&-1&-2{x_2}&-3{x_2}^2&0&0&0&0&0&0&0&0\\
+      		    0&0&2&6{x_2}&0&0&-2&-6{x_2}&0&0&0&0&0&0&0&0\\
+      		    0&0&0&0&1&{x_2}&{x_2}^2&{x_2}^3&0&0&0&0&0&0&0&0\\
+      		    0&0&0&0&1&{x_3}&{x_3}^2&{x_3}^3&0&0&0&0&0&0&0&0\\
+      		    0&0&0&0&0&1&2{x_3}&3{x_3}^2&0&-1&-2{x_3}&-3{x_3}^2&0&0&0&0\\
+      		    0&0&0&0&0&0&2&6{x_3}&0&0&-2&-6{x_3}&0&0&0&0\\
+      		    0&0&0&0&0&0&0&0&1&{x_3}&{x_3}^2&{x_3}^3&0&0&0&0\\
+      		    0&0&0&0&0&0&0&0&1&{x_4}&{x_4}^2&{x_4}^3&0&0&0&0\\
+      		    0&0&0&0&0&0&0&0&0&1&2{x_4}&3{x_4}^2&0&-1&-2{x_4}&-3{x_4}^2\\
+      		    0&0&0&0&0&0&0&0&0&0&2&6{x_4}&0&0&-2&-6{x_4}\\
+      		    0&0&0&0&0&0&0&0&0&0&0&0&1&{x_4}&{x_4}^2&{x_4}^3\\
+      		    0&0&0&0&0&0&0&0&0&0&0&0&1&{x_5}&{x_5}^2&{x_5}^3\\
+      		    0&0&2&6{x_1}&0&0&0&0&0&0&0&0&0&0&0&0\\
+      		    0&0&0&0&0&0&0&0&0&0&0&0&0&0&2&6{x_5}
+      		    \end{array}\right)
+      	$x$
+      	\left(\begin{array}{c} 
+      		$A_{10}$\\$A_{11}$\\$A_{12}$\\	$A_{13}$\\	
+      		$A_{20}$\\$A_{21}$\\$A_{22}$\\	$A_{23}$\\ 
+      		$A_{30}$\\$A_{31}$\\$A_{32}$\\	$A_{33}$\\ 
+      		$A_{40}$\\$A_{41}$\\$A_{42}$\\	$A_{43}$
+      	\end{array}\right)
+      		$=$
+      		\left(\begin{array}{c} 
+      			${y_{1}}$\\$y_{2}$\\$0$\\	$0$\\	
+      			$y_{2}$\\$y_{3}$\\$0$\\	$0$\\ 
+      			$y_{3}$\\$y_{4}$\\$0$\\	$0$\\ 
+      			$y_{4}$\\$y_{5}$\\$0$\\	$0$\\ [15pt]
+      		  	\end{array}\right)						
+      	
+      }\\
+     \\[10pt]
+      	
+      	\centering{\normalsize Коэффициенты $A_{ij}:$}\\
+      	              
+      $$\centering{\normalsize  
+      	\begin{vmatrix}
+      \large A_{10}\\A_{11}\\ A_{12}\\ A_{13}\\
+      A_{20}\\A_{21}\\A_{22}\\A_{23}\\
+      A_{30}\\A_{31}\\A_{32}\\A_{33}\\
+      A_{40}\\A_{41}\\A_{42}\\A_{43}
+      \end{vmatrix}
+      \centering{\large =}
+       \begin{vmatrix}
+       3\\-128.83\\ 217.28\\ 78.42\\
+       72.44\\-219.64\\181.63\\-42.67\\
+       -50.14\\14.16\\6.41\\-0.95\\
+       2.72\\0.27\\0\\0
+       \end{vmatrix}}$$
+       \newpage
+       
+       {\left \normalsize $Уравнение сплайна имеет вид:$}\\[10pt]
+     {\normalsize ${F(x)}$= \left\{ 
+      	\begin{aligned}
+      	F_1(x)&=78.42x^3+217.28x^2-128.83x+3,\,\, $где$ \,\,\,{x}\in\,\,\, {$[0,\,0.5]$}};\\
+      F_2(x)&=-42.67x^3+181.63x^2-219.64x+72.44,\,\, $где$ \,\,\,{x}\in\,\,\, {$[0.5,\,1.4]$}};\\
+    F_3(x)&=-0.95x^3+6.41x^2+14.16x-50.14,\,\, $где$ \,\,\,{x}\in\,\,\, {$[1.4,\,2.25]$}};\\
+F_4(x)&=0\cdot x^3+0\cdot x^2+0.27x+2.72,\,\, $где$ \,\,\,{x}\in\,\,\, {$[2.25,\,3.5]$}}\\
+      	\end{aligned}
+      	\right.\]
+    }
+      \newpage
+      \subsection{Решение задачи оптимального распределения неоднородных ресурсов}
+      \textbf{Постановка задачи. }\\
+      Для изготовления ${n}$ видов изделий {И_1}$, {И_2}, \,\,$\cdot \cdot \cdot \,\,${И_n}$ необходимы ресурсы ${m}$ видов: трудовые, материальные, финансовые и др.\\ 
+      Известно требуемое количество отдельного $i$-гo ресурса для изготовления каждого $j$-го изделия - норма расхода ${с_ij}$. \\
+      Пусть определено количество каждого вида ресурса, которым предприятие располагает в данный момент - ${а_j}$. Известна прибыль $П_j$, получаемая предприятием от изготовления каждого ${j}$-го изделия. \\
+      Требуется определить, какие изделия и в каком количестве должны производиться предприятием, чтобы прибыль была максимальной.\\
+      Составим систему уравнений:\\      
+      Математическая модель задачи выглядит следующим образом.\\
+      Целевая функция имеет вид:\\
+      25{x_1}+45{x_2}+60{x_3}+20{x_4}\rightarrow max\\
+      Ограничения имеют вид$:$\\
+      \begin{equation}
+      \left\
+      \begin{aligned}
+      2{x_1}&+4{x_2}+2{x_3}+9{x_4}=20 \\
+      5{x_1}&+5{x_2}+5{x_3}+6{x_4}=10 \\
+      5{x_1}&+6{x_2}+4{x_3}+8{x_4}=30 \\
+      {x_j}&\geq{0};\,\,{j=\overline{1,4}}
+      \end{aligned} \right\}\hspace{270}
+      \end{equation}
+      
+
+      \newpage
+      Оптимальное распределение неоднородных ресурсов зафиксировано в векторе . Из полученного решения видно, что\\
+      {x_1}={},\\ {x_2}={},\\{x_3}={},\\ {x_4}={}. \\
+      %Это означает, что изделия ,   и  предприятие изготавливать не должно. Ему нужно производить только второе изделие в количестве  единиц. Цифра в переменной  определяет изделие, планируемое для изготовления. Оптимальное распределение ресурсов обеспечит получение максимальной прибыли , которая составит  единиц.
+      	
+      	\newpage
+      	\section{ Заключение}
+      	Курсовая работа состояла из трех частей: \\В первой части была исследована функция и построен ее график. Во второй части найдены коэффициенты кубического сплайна. В третьей части решалась задача оптимального распределения неоднородных ресурсов.
+      	
+      	
+      	
+\end{document}
