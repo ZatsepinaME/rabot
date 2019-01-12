@@ -12,19 +12,28 @@
 
 \documentclass[russian,utf8,nocolumnxxxi,nocolumnxxxii]{eskdtext}
 	
-\usepackage[T1,T2A]{fontenc}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[european,cuteinductors,smartlabels]{circuitikz}
+\usepackage{amssymb,amsmath,amsfonts,latexsym,mathtext}
 \usepackage[utf8]{inputenc}
 %\usepackage[utf8x]{inputenc}
 %\usepackage[english,ukrainian,russian]{babel}
 \usepackage{amssymb,amsmath}
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
 \usepackage{tikz}
+\usetikzlibrary{arrows,automata,shapes,calc}
+%usepackage[european,cuteinductors,smartlabels]{circuitikz}
 \usepackage{pgffor}
+%\usetikzlibrary{datavisualization}
+%\usetikzlibrary{datavisualization.formats.functions}
 \usepackage{pgfplots}
+%\pgfplotsset{compat=newest}
 \pgfplotsset{compat=1.9}%используемую версию ( указана версия 1.9)
-\usepackage{circuitikz}
+%usepackage{circuitikz}
 \usepackage{siunitx}
-\usepackage[american,cuteinductors,smartlabels]{circuitikz}
+%usepackage[american,cuteinductors,smartlabels]{circuitikz}
 \usepackage{indentfirst} % Красная строка
 \usepackage{graphicx}
 \graphicspath{{pictures/}}
@@ -66,16 +75,17 @@
     \section{ Основная часть}
      \subsection{Задание на курсовую работу}
      \upshape{\normalsize 1. Даны функции:}\\[4pt]
-     {\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,} {$f{(x)}$ = \sqrt{3}sin(x) + cos(x), {\,}$и$ \\
-     {g{(x)} = cos(2∙{x} + {\pi}/3)-1}\\[7pt]
-    $ a)	Решить уравнение {$f{(x)}$ = ${g(x).}$ $\\
-    $ b)	Исследовать функцию $h{(x)}$ = $f{(x)}$ – $g{(x)}$ на промежутке [0 ; (5∙\pi)/6].$\\ [10pt]
-     \upshape{\normalsize 2. Найти коэффициенты кубического сплайна, интерполирующего данные, представленные в векторах $\vec{V}_x$ и $\vec{V}_y$. \\
-     Построить на одном графике функцию $f(x)$ и функцию $f_1(x)$, полученную после нахождения коэффициентов кубического сплайна.\\
-     Представить графическое изображение результатов интерполяции исходных данных различными методами с использованием встроенных функций $cspline(V_x,V_y)$, $pspline(V_x,V_y)$, $lspline(V_x,V_y)$ и $interp(V_k,V_x,V_y,x)$.}\\[4pt]
+      {$f{(x)}$ = $\sqrt{3}sin(x)$ + cos(x), {\,}$и$ \\
+     {g{(x)} = cos(2{x} + ${\pi}/3$)-1}\\[7pt]
+    a)	Решить уравнение ${f{(x)}$ = ${g(x).}$ \\
+    b)	Исследовать функцию $h{(x)} = f{(x)} – g{(x)}$ на промежутке [0 ; (5$\pi)$/6].\\ [10pt]
+     %\upshape
+     2. Найти коэффициенты кубического сплайна, интерполирующего данные, представленные в векторах $\vec{V}$_x и $\vec{V}$_y.}\,
+     $Построить на одном графике функцию $f(x)$ и функцию $f_1(x)$, полученную после нахождения коэффициентов кубического сплайна.$\\
+     $Представить графическое изображение результатов интерполяции исходных данных различными методами с использованием встроенных функций $cspline(V_x,V_y)$, $pspline(V_x,V_y)$, $lspline(V_x,V_y)$ и $interp(V_k,V_x,V_y,x)$.\\[4pt]
      \upshape{\normalsize 3. Решить задачу оптимального распределения неоднородных ресурсов.}\\
      Исходные данные представлены в таблице 1.
-     
+    
      \begin{table}[ht]
      	\caption{ }\label{tab:tab1}
      	\centering%центрируем таблицу	
@@ -165,7 +175,7 @@
       Полученные из уравнения \eqref{eq:num3} значения ${x}$ - это точки пересечения функции {$h(x)$} с осью ОХ.\\
       \begin{equation}\label{eq:num4}
       \begin{aligned}
-      \sqrt{3}sin(x) + cos(x)$–$(cos(2{x} + {\frac{\pi}{3})-1})=0
+      $\sqrt{3}$sin(x) + cos(x)$–$(cos(2{x} + {$\frac${$\pi}${3})-1})=0
       \end{aligned}
       \end{equation}
     \\[8pt]
@@ -525,44 +535,40 @@
       \end{vmatrix}
       \centering{\large =}
        \begin{vmatrix}
-       -12.708\\15.708\\-5.154\\0.634\\
-       2.196\\0.504\\-3.258\\1.849\\
-       13.057\\-9.357\\2.849\\1.768\\
-       4.12\\-0.787\\-0.021\\2.569
+       3\\-1.024\\0\\1.695\\
+       3.432\\-3.614\\5.18\\-1.759\\
+       -4.785\\13.994\\-7.397\\1.236\\
+       12.165\\-8.607\\2.648\\-0.252
               \end{vmatrix}}$$
        \newpage
        
-       {\left \normalsize $Уравнение сплайна имеет вид:$}\\[10pt]
-     {\normalsize ${F(x)}$= \left\{ 
+       
+      {\left \normalsize $Уравнение сплайна имеет вид:$}\\[10pt]
+      {\normalsize ${F(x)}$= \left\{ 
       	\begin{aligned}
-      	$F_1(x)&=0.634x^3-5.154x^2+15.708x-12.708,$\,\, $где$ \,\,\,{x}\,{\in}\,\,\, {$[0,\,0.5]$}};\\
-      $F_2(x)&=1.849x^3-3.258x^2+0.504x+2.196,$\,\, $где$ \, {x}\,{\in}\, {$[0.5,\,1.4]$}};\\
-    $F_3(x)&=1.768x^3+2.849x^2-9.357x+13.057,$\,\, $где$ \,\,\,{x}\,{\in}\,\,\, {$[1.4,\,2.25]$}};\\
-$F_4(x)&=2.569x^3-0.021x^2-0.787x+4.12$,\,\, $где$\,{x}\,{\in}\, {$[2.25,\,3.5]$}}.\\
-      	\end{aligned} 	\right.\]
-   }\\[20pt]
+      	$F_1(x)&=1.695x^3+0x^2-1.024x+3\,\,\,{x}\,{\in}\,\,\, {$[0,\,0.5]$}};\\
+      $F_2(x)&=-1.759x^3+5.18x^2-3.614x+3.432 {x}\,{\in}\, {$[0.5,\,1.4]$}};\\
+    $F_3(x)&=1.236x^3-7.397x^2+13.994x-4.785,$\,\, $где$ \,\,\,{x}\,{\in}\,\,\, {$[1.4,\,2.25]$}};\\
+$F_4(x)&=-0.252x^3+2.648x^2-8.607x+12.165$,\,\, $где$\,{x}\,{\in}\, {$[2.25,\,3.5]$}}.\\
+\end{aligned} 	\right.\]
+}
+       \\[20pt]
    ${F(1.2)}=19.579$
     \\[100pt]
+    $
+
+\\
 \begin{tikzpicture}
-\begin{scope}[scale=1.7]
+\begin{scope}[scale=1.5]
 \hspace{50}
-\begin{axis}[
-xmin = -1, ymax = 125,
-legend pos = north west,
-xlabel = {$x$},
-ylabel = {$y$},
-grid=major]]
-\addplot[domain=0:0.5,smooth] {0.634*x^3+(-5.154)*x^2+(15.708)*x-12.708};
-\addplot[domain=0.5:1.4,smooth] {1.849*x^3-3.2*x^2+(0.504)*x-5.29};
-\addplot[domain=1.4:2.25,smooth] {1.768*x^3+2.849*x^2-9.357*x-3.757};
-\addplot[domain=2.25:3.5,smooth] {2.569*x^3-0.021*x^2+(-0.787)*x-17.52};
-%\newcommand{\xx}{0.5}
-\draw (152,6.0) circle (1.8pt);
-\draw (236.5,6.0) circle (1.8pt);
-\draw (323,22.0) circle (1.8pt);
+\begin{axis}
+$\addplot[domain=0:0.5,smooth] {(1.695)*x^3 + (0)*x^2 + (-1.024)*x+3};
+$\addplot[domain=0.5:1.4,smooth] {(-1.759)*x^3 + (5.18)*x^2 + (-3.614)*x+(3.432)};
+\addplot[domain=1.4:2.25,smooth] {(1.236)*x^3 + (-7.397)*x^2 + (13.994)*x+(-4.785)};
+\addplot[domain=2.25:3.5,smooth] {(-0.252)*x^3 + (2.648)*x^2 + (-8.607)*x+(12.165)};
 \end{axis}
 \end{scope}
-\end{tikzpicture}\\
+\end{tikzpicture}
       	  \newpage
       \subsection{Решение задачи оптимального распределения неоднородных ресурсов}
       \textbf{Постановка задачи. }\\
@@ -572,7 +578,7 @@ grid=major]]
       Требуется определить, какие изделия и в каком количестве должны производиться предприятием, чтобы прибыль была максимальной.\\
       Математическая модель задачи выглядит следующим образом.\\
       Целевая функция имеет вид:\\
-      25{x_1}+45{x_2}+60{x_3}+20{x_4}\rightarrow max\\
+      25{x_1}+45{x_2}+60{x_3}+20{x_4}$\rightarrow$ max\\
       $Ограничения имеют вид$:$\\
       \begin{equation}
       \left\
@@ -583,9 +589,10 @@ grid=major]]
       {x_j}&\geq{0};\,\,{j=\overline{1,4}}
       \end{aligned} \right\}\hspace{270}
       \end{equation}
+      \\[10pt]
       После решения системы видно, что\\
-      {x_1}={12,5},\\ {x_2}={0},\\{x_3}={7,5},\\ {x_4}={0}. \\
-      $В оптимальном решении Изделие1=12,5; Изделие2=0; Изделие3=7,5; Изделие4=0. При этом максимальная прибыль будет составлять 100, а количество использованных ресурсов равно: трудовых=20, материальных=7, финансовых=30. 
+      {x_1}={12.5},\\ {x_2}={0},\\{x_3}={7.5},\\ {x_4}={0}. \\
+      $В оптимальном решении Изделие1=12.5; Изделие2=0; Изделие3=7.5; Изделие4=0. При этом максимальная прибыль будет составлять 100, а количество использованных ресурсов равно: трудовых=20, материальных=7, финансовых=30.$ 
        	\newpage
       	\section{ Заключение}
       	Курсовая работа состояла из трех частей: \\В первой части была исследована функция и построен ее график. Во второй части найдены коэффициенты кубического сплайна. В третьей части решалась задача оптимального распределения неоднородных ресурсов.
